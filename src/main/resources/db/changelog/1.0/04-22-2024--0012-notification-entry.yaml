@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0012-notification-entry
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: notification-entry
+      createTable:
+        tableName: notification-entry
+        columns:
+          - column:
+              name: id
+              type: bigint
+              autoIncrement: true
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_notification-entry
+          - column:
+              name: status
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: entry_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_notification-entry_entry
+                references: entry(id)
+          - column:
+              name: tourist_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_notification-entry_tourist
+                references: tourist(id)

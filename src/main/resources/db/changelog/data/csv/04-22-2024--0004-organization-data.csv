@@ -1,0 +1,6 @@
+fullname;shortname;website;contacts;information;status;manager_id;image_id
+fullname1;shortname1;website1;contacts1;information1;APPROVED;1;11
+fullname2;shortname2;website2;contacts2;information2;APPROVED;2;12
+fullname3;shortname3;website3;contacts3;information3;CANCELED;3;13
+fullname4;shortname4;website4;contacts4;information4;APPROVED;4;14
+fullname5;shortname5;website5;contacts5;information5;WAIT;5;15

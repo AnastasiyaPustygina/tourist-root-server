@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0009-entry
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: entry
+      createTable:
+        tableName: entry
+        columns:
+          - column:
+              name: id
+              type: bigint
+              autoIncrement: true
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_entry
+          - column:
+              name: status
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: event_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_entry_event
+                references: event(id)
+          - column:
+              name: tourist_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_entry_tourist
+                references: tourist(id)
+          - column:
+              name: organization_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_entry_organization
+                references: organization(id)

@@ -1,0 +1,79 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0008-event
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: event
+      createTable:
+        tableName: event
+        columns:
+          - column:
+              name: id
+              type: bigint
+              autoIncrement: true
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_event
+          - column:
+              name: name
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: cost
+              type: integer
+              constraints:
+                nullable: false
+          - column:
+              name: current_count
+              type: integer
+              constraints:
+                nullable: false
+          - column:
+              name: max_count
+              type: integer
+              constraints:
+                nullable: false
+          - column:
+              name: place
+              type: varchar(200)
+              constraints:
+                nullable: false
+          - column:
+              name: category
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: date_start
+              type: timestamp
+              constraints:
+                nullable: false
+          - column:
+              name: date_end
+              type: timestamp
+              constraints:
+                nullable: false
+          - column:
+              name: requirement
+              type: varchar(1000)
+
+          - column:
+              name: information
+              type: varchar(1000)
+
+          - column:
+              name: status
+              type: varchar(100)
+              constraints:
+                nullable: false
+
+          - column:
+              name: organization_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_event_organization
+                references: organization(id)

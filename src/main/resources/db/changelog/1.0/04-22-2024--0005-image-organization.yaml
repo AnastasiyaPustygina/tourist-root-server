@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0005-image-organization
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: organization_documents
+      createTable:
+        tableName: organization_documents
+        columns:
+          - column:
+              name: documents_id
+              type: bigint
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_image_organization
+                foreignKeyName: fk_image_organization_image
+                references: image(id)
+          - column:
+              name: organization_id
+              type: bigint
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_image_organization
+                foreignKeyName: fk_image_organization_organization
+                references: organization(id)

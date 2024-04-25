@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0004-organization
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: organization
+      createTable:
+        tableName: organization
+        columns:
+          - column:
+              name: id
+              type: bigint
+              autoIncrement: true
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_organization
+          - column:
+              name: fullname
+              type: varchar(200)
+              constraints:
+                nullable: false
+          - column:
+              name: shortname
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: website
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: contacts
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: information
+              type: varchar(1000)
+              constraints:
+                nullable: false
+          - column:
+              name: status
+              type: varchar(60)
+              constraints:
+                nullable: false
+          - column:
+              name: manager_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_organization_manager
+                references: manager(id)
+          - column:
+              name: image_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_organization_image
+                references: image(id)

@@ -1,0 +1,6 @@
+name;cost;current_count;max_count;place;category;date_start;date_end;requirement;information;status;organization_id
+name1;111;1;11;place1;OVERNIGHT_TENTS;2021-08-10T22:23:41;2021-08-12T22:23:41;requirement1;information1;ACTIVE;1
+name2;222;2;12;place2;RAFTING;2022-02-10T12:13:41;2022-02-14T12:13:41;requirement2;information2;ACTIVE;1
+name3;333;3;13;place3;OVERNIGHT_TENTS;2023-08-10T22:23:41;2023-08-11T12:00:00;requirement3;information3;ENDED;2
+name4;444;4;14;place4;COMFORT_TOURS;2024-08-10T22:23:41;2024-08-20T20:12:00;requirement4;information4;ACTIVE;2
+name5;555;5;15;place5;HIKING;2025-08-10T22:23:41;2025-08-13T11:22:00;requirement5;information5;FULL;4

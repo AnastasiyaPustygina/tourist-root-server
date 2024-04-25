@@ -1,0 +1,4 @@
+FROM openjdk:19
+COPY /target/TouristRootServer-1.0-SNAPSHOT.jar /touristRootServer.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "/touristRootServer.jar"]

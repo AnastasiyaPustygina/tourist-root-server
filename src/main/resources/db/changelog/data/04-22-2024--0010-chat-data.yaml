@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0010-chat-data
+      author: egor
+      runOnChange: true
+      loadData:
+        primaryKey: id
+        file: csv/04-22-2024--0010-chat-data.csv
+        relativeToChangelogFile: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: chat

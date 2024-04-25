@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0013-notification-message
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: notification-message
+      createTable:
+        tableName: notification-message
+        columns:
+          - column:
+              name: id
+              type: bigint
+              autoIncrement: true
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_notification-message
+          - column:
+              name: status
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: message_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_notification-message_message
+                references: message(id)
+          - column:
+              name: chat_id
+              type: bigint
+              constraints:
+                nullable: false
+          - column:
+              name: tourist_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_notification-message_tourist
+                references: tourist(id)
+          - column:
+              name: organization_id
+              type: bigint
+              constraints:
+                foreignKeyName: fk_notification-message_organization
+                references: organization(id)

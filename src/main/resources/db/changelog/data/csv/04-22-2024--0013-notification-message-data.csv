@@ -1,0 +1,4 @@
+status;message_id;chat_id;tourist_id;organization_id
+OLD;1;1;1;1
+NEW;2;2;2;2
+NEW;3;3;1;3

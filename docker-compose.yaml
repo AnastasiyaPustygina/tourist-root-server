@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres
+    container_name: roots_postgres
+    environment:
+      POSTGRES_DB: roots
+      POSTGRES_USER: roots_admin
+      POSTGRES_PASSWORD: roots_password
+      referenceUrl: 'hibernate:spring:entity?dialect=org.hibernate.dialect.PostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+    ports:
+      - "5433:5432"
+  trajectory-app:
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/roots
+      - SPRING_DATASOURCE_USERNAME=roots_admin
+      - SPRING_DATASOURCE_PASSWORD=roots_password
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver

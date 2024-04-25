@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0006-image-event
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: event_images
+      createTable:
+        tableName: event_images
+        columns:
+          - column:
+              name: images_id
+              type: bigint
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_image_event
+                foreignKeyName: fk_image_event_image
+                references: image(id)
+          - column:
+              name: event_id
+              type: bigint
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_image_event
+                foreignKeyName: fk_image_event_event
+                references: event(id)

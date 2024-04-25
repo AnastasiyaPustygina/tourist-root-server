@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 04-22-2024--0003-manager
+      author: egor
+      preConditions:
+        not:
+          tableExists:
+            tableName: manager
+      createTable:
+        tableName: manager
+        columns:
+          - column:
+              name: id
+              type: bigint
+              autoIncrement: true
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: pk_manager
+          - column:
+              name: name
+              type: varchar(100)
+              constraints:
+                nullable: false
+          - column:
+              name: login
+              type: varchar(100)
+              constraints:
+                nullable: false
+                unique: true
+          - column:
+              name: password
+              type: varchar(60)
+              constraints:
+                nullable: false
