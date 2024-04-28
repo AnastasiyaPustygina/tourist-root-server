@@ -61,7 +61,7 @@ public class Tourist {
             fetch = FetchType.LAZY, mappedBy = "tourist")
     private List<NotificationMessage> notificationMessages;
 
-    @OneToOne(targetEntity = Image.class)
+    @ManyToOne(targetEntity = Image.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
 }

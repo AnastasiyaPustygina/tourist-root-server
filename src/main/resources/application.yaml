@@ -4,8 +4,8 @@ server:
 spring:
   mail:
     host: smtp.gmail.com
-    username: pustygina.nastya@gmail.com
-    password: ixui veia alup ezmf
+    username: shpakegor1207@gmail.com
+    password: exuy yxkl xcug qehb
     port: 587
     protocol: smtp
     properties:

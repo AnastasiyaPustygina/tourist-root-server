@@ -16,8 +16,8 @@ public class EmailSenderConfigSpringMail {
                 mailSender.setHost("smtp.gmail.com");
                 mailSender.setPort(587);
 
-                mailSender.setUsername("pustygina.nastya@gmail.com");
-                mailSender.setPassword("ixui veia alup ezmf");
+                mailSender.setUsername("shpakegor1207@gmail.com");
+                mailSender.setPassword("exuy yxkl xcug qehb");
 
                 Properties props = mailSender.getJavaMailProperties();
                 props.put("mail.transport.protocol", "smtp");

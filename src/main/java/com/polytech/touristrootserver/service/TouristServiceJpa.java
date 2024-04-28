@@ -3,26 +3,29 @@ package com.polytech.touristrootserver.service;
 import com.polytech.touristrootserver.domain.Tourist;
 import com.polytech.touristrootserver.exception.TouristAlreadyExists;
 import com.polytech.touristrootserver.exception.TouristNotFound;
+import com.polytech.touristrootserver.repository.ImageRepository;
 import com.polytech.touristrootserver.repository.TouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class TouristServiceJpa implements TouristService{
     private final TouristRepository touristRepository;
 
+    private final ImageRepository imageRepository;
     private final PasswordEncryptionBCrypt passwordEncryptionBCrypt;
 
-//    public TouristServiceJpa(TouristRepository touristRepository, PasswordEncryptionBCrypt passwordEncryptionBCrypt) {
-//        this.touristRepository = touristRepository;
-//        this.passwordEncryptionBCrypt = passwordEncryptionBCrypt;
-//        touristRepository.findAll().forEach(t -> {
-//            t.setPassword(passwordEncryptionBCrypt.encrypt(t.getPassword()));
-//            touristRepository.save(t);
-//        });
-//    }
+    public TouristServiceJpa(TouristRepository touristRepository, PasswordEncryptionBCrypt passwordEncryptionBCrypt, ImageRepository imageRepository) {
+        this.touristRepository = touristRepository;
+        this.passwordEncryptionBCrypt = passwordEncryptionBCrypt;
+        touristRepository.findAll().forEach(t -> {
+            t.setPassword(passwordEncryptionBCrypt.encrypt(t.getPassword()));
+            touristRepository.save(t);
+        });
+        this.imageRepository = imageRepository;
+    }
 
     @Override
     @Transactional
@@ -46,6 +49,8 @@ public class TouristServiceJpa implements TouristService{
     @Override
     @Transactional
     public Tourist update(Tourist tourist) {
+        if(imageRepository.findByPath(tourist.getImage().getPath()).isEmpty())
+            imageRepository.save(tourist.getImage());
         return touristRepository.save(getByIdEndUpdateValues(tourist));
     }
 
@@ -68,7 +73,7 @@ public class TouristServiceJpa implements TouristService{
         oldTourist.setId(tourist.getId());
         oldTourist.setName(tourist.getName());
         oldTourist.setEmail(tourist.getEmail());
-        oldTourist.setGender(oldTourist.getGender());
+        oldTourist.setGender(tourist.getGender());
         oldTourist.setAgePeriod(tourist.getAgePeriod());
         oldTourist.setInformation(tourist.getInformation());
         oldTourist.setImage(tourist.getImage());
